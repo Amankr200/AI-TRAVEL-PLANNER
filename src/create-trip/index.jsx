@@ -1,28 +1,41 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import { SelectBudgetOptions, SelectTravelesList } from "../constents/options";
+import { AI_PROMPT, SelectBudgetOptions, SelectTravelesList } from "../constents/options";
+import { chatSession } from "../service/AIModal";
 
 function CreateTrip() {
   const [place, setPlace] = useState();
   const [formData, setFormData] = useState([]);
-  const handleInputChange=(name,value) => {
-setFormData({
-    ...formData,
-    [name]:value
-}
-)
-  }
-  useEffect(()=>{                                 
- console.log(formData);
-  },[formData])
-  const OnGenerateTrip=()=>{
-    if(!formData?.location||!formData?.budget||!formData?.traveler){
-        alert("Please fill in all fields before generating the trip.");
-        return;
-    }
+
+  const handleInputChange = (name, value) => {
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  useEffect(() => {
     console.log(formData);
-  }
+  }, [formData]);
+
+  const OnGenerateTrip = async () => {
+    if (!formData?.location || !formData?.budget || !formData?.traveler) {
+      alert("Please fill in all fields before generating the trip.");
+      return;
+    }
+    const FINAL_PROMPT = AI_PROMPT
+      .replace('{location}', formData?.location?.label)
+      .replace('{totalDays}', formData?.noOfDays)
+      .replace('{traveler}', formData?.traveler)
+      .replace('{budget}', formData?.budget)
+      .replace('{totalDays}', formData?.noOfDays);
+
+    console.log(FINAL_PROMPT);
+    const result = await chatSession.sendMessage(FINAL_PROMPT);
+    console.log(result?.response?.text());
+  };
+
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-56 xl:px-10 px-5 mt-10">
       <h2 className="font-bold text-3xl">Tell us your travel preferences ⛺🌴</h2>
@@ -43,7 +56,7 @@ setFormData({
               place,
               onChange: (v) => {
                 setPlace(v);
-                handleInputChange('location',v)
+                handleInputChange('location', v);
               }
             }}
           />
@@ -53,12 +66,12 @@ setFormData({
             How many days are you planning your trip?
           </h2>
           <input placeholder={"Ex.3"} type="number" 
-          className="w-full h-12 border rounded-lg p-2" // Added classes for size
+          className="w-full h-12 border rounded-lg p-2"
           onChange={(e) => {
             const value = e.target.value;
             if (value < 1 || value > 5) {
                 alert("You cannot enter less than 1 day and more than 5 days.");
-              e.target.value = 5; // This will reset the input field to 5
+              e.target.value = 5;
             } else {
               handleInputChange('noOfDays', value);
             }
