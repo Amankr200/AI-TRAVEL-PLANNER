@@ -1,0 +1,149 @@
+.trip-details-container {
+  padding: 20px;
+  background: linear-gradient(to right, #f0f4f8, #e0e7ff);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.trip-details-header {
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+.trip-details-subheader {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  color: #4a5568;
+  font-weight: 500;
+  text-align: center;
+}
+
+.trip-details-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.trip-details-hotels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.hotel-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin: 10px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-address {
+  font-size: 1.125rem;
+  color: #4a5568;
+  margin-bottom: 5px;
+}
+
+.hotel-price {
+  font-size: 1.25rem;
+  color: #f56565;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.hotel-rating {
+  font-size: 1.875rem;
+  color: #68d391;
+  margin: 5px 0;
+}
+
+.hotel-description {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+.trip-details-itinerary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.trip-details-itinerary-item {
+  flex: 1 1 calc(30% - 20px);
+  max-width: calc(30% - 20px);
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex: 1 1 calc(100% - 20px);
+  max-width: calc(100% - 20px);
+  margin-bottom: 20px;
+}
+
+.trip-details-item {
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex: 1 1 calc(25.333% - 150px);
+  max-width: calc(50% - 100px);
+}
+
+.trip-details-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.trip-details-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.trip-details-activity-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.trip-details-itinerary-item h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.trip-details-itinerary-item p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin: 5px 0;
+}
+
+.trip-details-itinerary-item .ticket-pricing {
+  font-weight: bold;
+  color: #f56565;
+}
+
+.trip-details-itinerary-item .time-to-travel {
+  font-style: italic;
+  color: #68d391;
+}
+
+.best-time-to-visit {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2b6cb0;
+  margin: 10px 0;
+  text-transform: uppercase;
+}

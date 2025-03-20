@@ -1,0 +1,83 @@
+import React from 'react';
+
+const TripDetails = ({ tripData }) => {
+  return (
+    <div className="mt-10 p-5 border rounded-lg shadow-lg bg-white">
+      <h2 className="text-2xl font-bold">Trip Details</h2>
+      <div className="mt-4">
+        <h3 className="font-semibold">Location: {tripData.tripDetails.location}</h3>
+        <p>Duration: {tripData.tripDetails.duration}</p>
+        <p>Budget: {tripData.tripDetails.budget}</p>
+        <p>Travelers: {tripData.tripDetails.travelers}</p>
+      </div>
+
+      <h3 className="mt-6 font-bold">Hotel Options:</h3>
+      <ul className="list-disc pl-5">
+        {tripData.hotelOptions.map((hotel, index) => (
+          <li key={index} className="mt-2">
+            <h4 className="font-semibold">{hotel.hotelName}</h4>
+            <p>{hotel.hotelAddress}</p>
+            <p>{hotel.price}</p>
+            <img src={hotel.hotelImageUrl} alt={hotel.hotelName} className="w-32 h-20 object-cover" />
+            <p>Rating: {hotel.rating}</p>
+            <p>{hotel.description}</p>
+            <p>Amenities: {hotel.amenities.join(', ')}</p>
+          </li>
+        ))}
+      </ul>
+
+      <h3 className="mt-6 font-bold">Itinerary:</h3>
+      {Object.entries(tripData.itinerary).map(([day, details]) => (
+        <div key={day} className="mt-4">
+          <h4 className="font-semibold">{day}</h4>
+          <p>Theme: {details.theme}</p>
+          <p>Best Time to Visit: {details.bestTimeToVisit}</p>
+          <ul className="list-disc pl-5">
+            {details.activities.map((activity, index) => (
+              <li key={index} className="mt-2">
+                <h5 className="font-semibold">{activity.placeName}</h5>
+                <p>{activity.placeDetails}</p>
+                <img src={activity.placeImageUrl} alt={activity.placeName} className="w-32 h-20 object-cover" />
+                <p>Ticket Pricing: {activity.ticketPricing}</p>
+                <p>Time to Travel: {activity.timeToTravel}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <h3 className="mt-6 font-bold">Budget Tips:</h3>
+      <ul className="list-disc pl-5">
+        {tripData.budgetTips.map((tip, index) => (
+          <li key={index} className="mt-2">{tip}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TripDetails;
+.trip-details {
+    margin-top: 2.5rem; /* mt-10 */
+    padding: 1.25rem; /* p-5 */
+    border: 1px solid #e5e7eb; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: #ffffff; /* bg-white */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  }
+  
+  .hotel-card {
+    border: 1px solid #e5e7eb; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 1rem; /* p-4 */
+    background-color: #f9fafb; /* bg-gray-50 */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-md */
+  }
+  
+  .itinerary-day {
+    border: 1px solid #e5e7eb; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 1rem; /* p-4 */
+    background-color: #f3f4f6; /* bg-gray-100 */
+  }
+  

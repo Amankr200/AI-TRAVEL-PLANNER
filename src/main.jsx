@@ -6,20 +6,27 @@ import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router'
 import Header from './assets/components/custom/Header.jsx'
 import CreateTrip from './create-trip/index.jsx'
+import TripDetails from './create-trip/TripDetails.jsx'
 
-const router=createBrowserRouter([
+const router = createBrowserRouter([
   {
-path:'/',
-element:<App/>
-},
-{
-  path:'/create-trip',
-  element:<CreateTrip/>
-  }
-])
+    path: '/',
+    element: <App />,
+  },
+  {
+    path: '/create-trip',
+    element: <CreateTrip />,
+  },
+  {
+    path: '/trip-details',
+    element: <TripDetails />,
+  },
+]);
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Header/>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router}>
+      <Header />
+    </RouterProvider>
   </StrictMode>,
-)
+);
