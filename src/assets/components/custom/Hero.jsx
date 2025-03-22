@@ -121,7 +121,7 @@ function Hero() {
       
       <animated.h1 
         style={titleAnimation} 
-        className='font-extrabold text-[60px] text-center mt-40 relative'
+        className='font-extrabold text-[60px] text-center mt-25 relative'
       >
         <span className='text-[#f56551]'>Discover Your Next Adventure with AI:</span> <br></br>Personalized Itineraries at Your Fingertips
       </animated.h1>

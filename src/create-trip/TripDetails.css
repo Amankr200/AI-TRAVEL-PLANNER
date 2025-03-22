@@ -7,14 +7,14 @@
 
 .trip-details-header {
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
   color: #2d3748;
   margin-bottom: 20px;
 }
 
 .trip-details-subheader {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   margin-top: 1rem;
   color: #4a5568;
   font-weight: 500;
@@ -30,6 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .hotel-name {
@@ -70,6 +71,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .trip-details-itinerary-item {
@@ -96,6 +98,13 @@
   transition: transform 0.3s, box-shadow 0.3s;
   flex: 1 1 calc(25.333% - 150px);
   max-width: calc(50% - 100px);
+  width: 100%;
+  max-width: 400px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .trip-details-item:hover {
@@ -107,14 +116,14 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 5px;
 }
 
 .trip-details-activity-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .trip-details-itinerary-item h5 {
@@ -146,4 +155,20 @@
   color: #2b6cb0;
   margin: 10px 0;
   text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .trip-details-header {
+    font-size: 1.5rem;
+  }
+
+  .trip-details-subheader {
+    font-size: 1.2rem;
+  }
+
+  .trip-details-item {
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+  }
 }
