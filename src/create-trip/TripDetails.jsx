@@ -2,7 +2,46 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../assets/components/custom/Header';
 import axios from 'axios';
+import { useSpring, animated, config, useTrail } from 'react-spring';
 import './TripDetails.css';
+
+const TravelIcons = () => {
+  const icons = ["✈️", "🚗", "🏝️", "🏨", "🧳", "🗺️"];
+  const [currentIcon, setCurrentIcon] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIcon((prev) => (prev + 1) % icons.length);
+    }, 3000); // Change icon every 3 seconds
+    return () => clearInterval(interval);
+  }, [icons.length]);
+
+  const trails = useTrail(icons.length * 2, { // Increase the number of icons
+    from: { transform: "scale(0)", opacity: 0 },
+    to: { transform: "scale(1.5)", opacity: 0.08 },
+    config: { mass: 2, tension: 180, friction: 24 },
+  });
+
+  return (
+    <div className="absolute w-full h-full overflow-hidden pointer-events-none">
+      {trails.map((props, index) => (
+        <animated.div
+          key={index}
+          style={{
+            ...props,
+            position: "absolute",
+            fontSize: `${Math.random() * 2 + 2}rem`,
+            left: `${Math.random() * 100}%`, // Use full screen width
+            top: `${Math.random() * 100}%`, // Use full screen height
+            zIndex: -1,
+          }}
+        >
+          {icons[(currentIcon + index) % icons.length]}
+        </animated.div>
+      ))}
+    </div>
+  );
+};
 
 function TripDetails() {
   const location = useLocation();
@@ -60,8 +99,15 @@ function TripDetails() {
     fetchImages();
   }, [tripData]);
 
+  const fadeIn = useSpring({
+    from: { opacity: 0, transform: 'translateY(20px)' },
+    to: { opacity: 1, transform: 'translateY(0)' },
+    config: { tension: 200, friction: 20 },
+  });
+
   return (
-    <div className="trip-details-container">
+    <animated.div style={fadeIn} className="trip-details-container relative min-h-screen">
+      <TravelIcons />
       <Header />
       <div className="p-5">
         <h2 className="trip-details-header">Your Trip Details</h2>
@@ -105,7 +151,7 @@ function TripDetails() {
           ))}
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 }
 

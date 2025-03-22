@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSpring, animated, config, useTrail } from 'react-spring';
 
 const TravelIcons = () => {
@@ -42,7 +42,8 @@ const TravelIcons = () => {
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -112,6 +113,15 @@ function Hero() {
     },
   });
 
+  const handleGetStartedClick = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please sign in first.');
+    } else {
+      navigate('/create-trip');
+    }
+  };
+
   return (
     <div 
       className='relative flex flex-col items-center gap-9 min-h-[90vh] overflow-hidden'
@@ -133,14 +143,13 @@ function Hero() {
         Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budget.
       </animated.p>
       
-      <Link to={'/create-trip'}>
-        <animated.button 
-          style={buttonAnimation} 
-          className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:translate-y-[-5px]"
-        >
-          Get Started, It's Free
-        </animated.button>
-      </Link>
+      <animated.button 
+        style={buttonAnimation} 
+        className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:translate-y-[-5px]"
+        onClick={handleGetStartedClick}
+      >
+        Get Started, It's Free
+      </animated.button>
 
       <animated.div style={parallaxBg} className="absolute inset-0 z-[-2]">
         <div className="absolute top-20 left-20 w-40 h-40 bg-orange-100 rounded-full opacity-20 blur-xl"></div>

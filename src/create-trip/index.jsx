@@ -16,6 +16,13 @@ function CreateTrip() {
   });
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/');
+    }
+  }, [navigate]);
+
   const handleInputChange = (name, value) => {
     setFormData({
       ...formData,
