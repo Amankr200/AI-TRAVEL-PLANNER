@@ -1,3 +1,27 @@
+AI-Powered Travel Planner! 🌍✈️
+
+Excited to share my latest project—an AI Travel Planner 🏝️🚆 built using React 19, Gemini API, and multiple powerful APIs like Google Auth, Unsplash, Google Places, and Spring for animations!
+
+✨ What it does?
+
+ 🔹 Plan trips anywhere in the world 🌍
+ 
+ 🔹 Get AI-recommended hotels & itineraries based on budget, number of days, and travelers 🏨📅
+ 
+ 🔹 Seamless user experience with Google Auth & interactive animations 🎨
+ 
+ 🔹 Fully responsive—works smoothly on mobile, tablet, and desktop 📱💻
+ 
+💡 Tech Stack: React 19 ⚛️ | Gemini API 🤖 | Tailwind CSS 🎨 | Google Auth 🔐 | Unsplash 🖼️ | Google Places 📍 | Spring 🎥
+
+ 🚀 Deployed on Netlify for smooth accessibility!
+ 
+🔗 Live Project:  https://ai-travel-planner-aman.netlify.app
+
+Would love to hear your feedback! Try it out and let me know your thoughts. 🚀
+
+ video demo link - https://youtu.be/Cke4r_0kFYU
+ 
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
